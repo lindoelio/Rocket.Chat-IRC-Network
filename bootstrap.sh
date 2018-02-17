@@ -15,7 +15,6 @@ cd ~ && wget http://prdownloads.sourceforge.net/ircd-hybrid/ircd-hybrid-8.2.8.tg
 tar -xzf ircd-hybrid-8.2.8.tgz && rm ircd-hybrid-8.2.8.tgz
 
 cd ircd-hybrid-8.2.8
-
 ./configure --prefix=/opt/hybrid
 make && make install
 
@@ -29,7 +28,6 @@ tar -xzf anope-2.0.2-source.tar.gz && rm anope-2.0.2-source.tar.gz
 cp /tmp/anope-config.cache anope-2.0.2-source/config.cache
 
 cd anope-2.0.2-source
-
 ./Config -quick && cd build
 make && make install
 
@@ -46,8 +44,14 @@ chown -R irc-admin /opt/anope
 # Configuring and starting Hybrid
 
 cp /tmp/hybrid-ircd.conf /opt/hybrid/etc/ircd.conf
+
 cd /opt/hybrid/bin
 runuser -u irc-admin ./ircd
 
 
 # Configuring and starting Anope Services
+
+cp /tmp/anope-services.conf /opt/anope/conf/services.conf
+
+cd /opt/anope/bin
+runuser -u irc-admin ./anoperc start

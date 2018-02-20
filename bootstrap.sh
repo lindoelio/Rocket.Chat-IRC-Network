@@ -4,7 +4,7 @@
 
 apt-get update
 apt-get install -y build-essential cmake openssl libssl-dev wget
-
+apt-get autoclean
 
 # Installing Hybrid (IRC Network Server)
 
@@ -17,7 +17,7 @@ tar -xzf ircd-hybrid-8.2.8.tgz && rm ircd-hybrid-8.2.8.tgz
 cd ircd-hybrid-8.2.8
 ./configure --prefix=/opt/hybrid
 make && make install
-
+cd .. && rm -rf ircd-hybrid-8.2.8
 
 # Installing Anope Services
 
@@ -30,6 +30,7 @@ make && make install
 #cd anope-2.0.2-source
 #./Config -quick && cd build
 #make && make install
+#cd .. && rm -rf anope-2.0.2-source
 
 
 # Configuring pre-requisites
